@@ -20,7 +20,6 @@ sub startup {
         my $msg = decode_json($c->req->content->asset->slurp);
 
         my $repository = $msg->{repository}->{name};
-        my $commits    = $msg->{repository}->{commits};
 
         # Go to the right directory
         my $sub_dir = Mojo::URL->new($msg->{repository}->{url})->path;
@@ -50,13 +49,7 @@ sub startup {
             }
         }
 
-        if (scalar(@{$commits})) {
-            # This is a push hook
-            $c->app->log->info(git::push qw(--quiet github));
-        } else {
-            # This is a tag hook
-            $c->app->log->info(git::push qw(--quiet --tags github));
-        }
+        $c->app->log->info(git::push qw(--quiet github));
 
         $c->app->log->info($repository.' mirrored to github (or at least tryed to be mirrored)');
         $c->render(
