@@ -21,10 +21,18 @@ sub startup {
 
         my $repository = $msg->{repository}->{name};
 
+        if ($c->config->{authorized}->{$msg->{project_id}} ne $c->param('user').'/'.$c->param('repo')) {
+            $c->app->log->info('Not authorized');
+            $c->render(
+                text   => $repository.' not authorized to mirror to github/'.$c->param('user').'/'.$c->param('repo'),
+                status => 200
+            );
+        }
+
         # Go to the right directory
         my $sub_dir = Mojo::URL->new($msg->{repository}->{url})->path;
         my $dir     = '/home/git/repositories/'.$sub_dir.'/';
-        return $c->app->log($dir.' does not exists or is not a directory. Mirroring for '.$repository.' aborted.') unless (-d $dir);
+        return $c->app->log->info($dir.' does not exists or is not a directory. Mirroring for '.$repository.' aborted.') unless (-d $dir);
         chdir $dir;
 
         # Check configuration
