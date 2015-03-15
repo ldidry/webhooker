@@ -71,10 +71,10 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
-  Config-GitLike-1.15
-    pathname: A/AL/ALEXMV/Config-GitLike-1.15.tar.gz
+  Config-GitLike-1.16
+    pathname: A/AL/ALEXMV/Config-GitLike-1.16.tar.gz
     provides:
-      Config::GitLike 1.15
+      Config::GitLike 1.16
       Config::GitLike::Cascaded undef
       Config::GitLike::Git undef
     requirements:
@@ -243,8 +243,8 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojolicious-5.71
-    pathname: S/SR/SRI/Mojolicious-5.71.tar.gz
+  Mojolicious-6.02
+    pathname: S/SR/SRI/Mojolicious-6.02.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -307,7 +307,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Server undef
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
-      Mojolicious 5.71
+      Mojolicious 6.02
       Mojolicious::Command undef
       Mojolicious::Command::cgi undef
       Mojolicious::Command::cpanify undef

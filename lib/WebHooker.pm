@@ -15,15 +15,15 @@ sub startup {
     my $r = $self->routes;
 
     # Normal route to controller
-    $r->post('/:ssh_nickname/:user/:repo' => sub {
+    $r->post('/:user/:repo' => sub {
         my $c   = shift;
         my $msg = decode_json($c->req->content->asset->slurp);
 
         my $repository = $msg->{repository}->{name};
 
-        if ($c->config->{authorized}->{$msg->{project_id}} ne $c->param('user').'/'.$c->param('repo')) {
+        if (defined($c->config->{authorized}) && $c->config->{authorized}->{$msg->{project_id}} ne $c->param('user').'/'.$c->param('repo')) {
             $c->app->log->info('Not authorized');
-            $c->render(
+            return $c->render(
                 text   => $repository.' not authorized to mirror to github/'.$c->param('user').'/'.$c->param('repo'),
                 status => 200
             );
@@ -38,14 +38,16 @@ sub startup {
         # Check configuration
         my $data   = Config::GitLike->load_file('config');
         my $writer = Config::GitLike->new(confname => 'config');
-        unless (defined($data->{'remote.github.url'}) && defined($data->{'remote.github.mirror'})) {
-            if (defined($c->param('ssh_nickname')) && defined($c->param('user')) && defined($c->param('repo'))) {
-                $c->app->log->info('git config does not contain github informations, doing configuration');
+        my $github_url = 'https://'.$c->config->{github}->{user}.':'.$c->config->{github}->{passwd}.'@github.com/';
+        my $old_config = (defined($data->{'remote.github.url'}) && $data->{'remote.github.url'} !~ m/https/);
+        unless (defined($data->{'remote.github.url'}) && defined($data->{'remote.github.mirror'}) && !($old_config)) {
+            if (defined($c->param('user')) && defined($c->param('repo'))) {
+                $c->app->log->info('git config does not contain github informations or need updating, doing configuration');
                 $writer->set(
                     key      => 'remote.github.url',
-                    value    => $c->param('ssh_nickname').':'.$c->param('user').'/'.$c->param('repo'),
+                    value    => $github_url.$c->param('user').'/'.$c->param('repo'),
                     filename => 'config'
-                ) unless (defined($data->{'remote.github.url'}));
+                ) unless (defined($data->{'remote.github.url'}) && !($old_config));
                 $writer->set(
                     key      => 'remote.github.mirror',
                     value    => 'true',
@@ -59,7 +61,7 @@ sub startup {
 
         $c->app->log->info(git::push qw(--quiet github));
 
-        $c->app->log->info($repository.' mirrored to github (or at least tryed to be mirrored)');
+        $c->app->log->info($repository.' mirrored to github because of '.$msg->{user_name}.' (or at least tryed to be mirrored)');
         $c->render(
             text   => $repository.' mirrored to github (or at least tryed to be mirrored)',
             status => 200
