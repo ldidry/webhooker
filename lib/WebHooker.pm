@@ -9,7 +9,10 @@ use Git::Sub qw(push);
 sub startup {
     my $self = shift;
 
-    $self->plugin('Config');
+    $self->plugin('Config', default => {
+            repo_dir => '/home/git/repositories',
+        }
+    );
 
     # Router
     my $r = $self->routes;
@@ -31,7 +34,9 @@ sub startup {
 
         # Go to the right directory
         my $sub_dir = Mojo::URL->new($msg->{repository}->{url})->path;
-        my $dir     = '/home/git/repositories/'.$sub_dir.'/';
+        my $repo_dir = $c->config->{repo_dir};
+        $repo_dir    =~ s#/$##;
+        my $dir      = $repo_dir.'/'.$sub_dir.'/';
         return $c->app->log->info($dir.' does not exists or is not a directory. Mirroring for '.$repository.' aborted.') unless (-d $dir);
         chdir $dir;
 
