@@ -23,10 +23,14 @@
     # The key is the id of the project in gitlab, the value is the github repository that the gitlab project
     # is allowed to push to.
     # To get the gitlab id, do (as root):
-    #
     # cd /home/git/web_hooker/
     # su git
     # psql -d gitlabhq_production
+    #
+    # Or if your GitLab instance was installed with the Omnibus package, instead of the above commands, you can connect to PostgreSQL with :
+    # gitlab-rails dbconsole
+    #
+    # The execute the following request :
     # SELECT p.id, p.name, u.name AS u_name, w.url from projects p
     # JOIN users u ON u.id = p.creator_id
     # LEFT JOIN web_hooks w ON w.project_id = p.id
