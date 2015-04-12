@@ -37,7 +37,7 @@
     #authorized => {
     #    1   => 'ldidry/webhooker',
     #    2   => 'ldidry/lutim',
-    #}
+    #},
     # Where Gitlab stores its repositories
     # optional, default to /home/git/repositories
     #repo_dir => '/var/opt/gitlab/git-data/repositories',
