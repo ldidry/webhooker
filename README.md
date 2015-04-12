@@ -28,7 +28,6 @@ The `web_hooker.conf` file is self-documented but, **please**, have a close look
 carton exec hypnotoad script/web_hooker
 ```
 
-Yup, that's all, it will listen at "http://127.0.0.1:8080".
+Yup, that's all, it will listen at "http://127.0.0.1:4242".
 
 For more options (interfaces, user, etc.), change the configuration in `web_hooker.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
-
