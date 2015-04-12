@@ -18,7 +18,7 @@ sub startup {
     my $r = $self->routes;
 
     # Normal route to controller
-    $r->post('/:user/:repo' => sub {
+    $r->post('/:user/*repo' => sub {
         my $c   = shift;
         my $msg = decode_json($c->req->content->asset->slurp);
 
