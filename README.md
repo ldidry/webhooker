@@ -29,6 +29,8 @@ Edit `web_hooker.conf` to to comply with your configuration.
 
 The `web_hooker.conf` file is self-documented but, **please**, have a close look at the `authorized` option.
 
+You will need an account that has the right to push to the github repository. Put its credentials in `web_hooker.conf`.
+
 For more options about how Web Hooker listen (interfaces, user, etc.), change the configuration in `web_hooker.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
 
 ### Start WebHooker at boot
