@@ -2,7 +2,7 @@
 
 Use Web Hooker to mirror your gitlab to Github :-)
 
-## Debian 7 installation
+## Debian installation
 
 ### Prerequisites
 * Git: to clone the repo
@@ -10,7 +10,8 @@ Use Web Hooker to mirror your gitlab to Github :-)
 * Build-essentials: Install several tools and libraries that you might need
 
 ```shell
-apt-get install git carton build-essentials
+apt-get install git build-essentials
+cpan Carton
 ```
 
 ### Installation of Web Hooker
@@ -30,7 +31,10 @@ The `web_hooker.conf` file is self-documented but, **please**, have a close look
 
 For more options about how Web Hooker listen (interfaces, user, etc.), change the configuration in `web_hooker.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
 
-Start WebHooker at boot :
+### Start WebHooker at boot
+
+#### initV
+
 ```shell
 cp /opt/web_hooker/utilities/web_hooker.default /etc/default/web_hooker
 sed -i 's/\/home\/git/\/opt/' /etc/default/web_hooker
@@ -40,7 +44,17 @@ service web_hooker start
 service web_hooker status
 ```
 
-It's installed, all you have to do now is to add a web hook to your project :
+#### systemd
+
+```shell
+cp /opt/web_hooker/utilities/web_hooker.service /etc/systemd/system
+# Adapt it to your installation directory
+vi /etc/systemd/system/web_hooker.service
+systemctl enable web_hooker.service
+systemctl start web_hooker.service
+```
+
+It's installed and running, all you have to do now is to add a web hook to your project :
 ```
 http://127.0.0.1:4242/<gh_username>/<gh_repo>
 ```
