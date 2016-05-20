@@ -1,12 +1,12 @@
 # Web Hooker
 
-Pouvoir utiliser Web Hooker afin de pouvoir faire un miroir de votre gitlab sur Github :-)
+Utilisez Web Hooker afin de pouvoir faire un miroir de votre gitlab sur Github :-)
 
 ## Installation sur Debian
 
 ### Pré-repuis
 * Git: afin de cloner le dépôt
-* Carton: gestionnaire des dépendances Perl, qui récupérera ce qui est nécessaire. Ne vous préoccupez pas des dépendances (mais vous pouvez tout de m^mee lire le fichier cpanfile)
+* Carton: gestionnaire des dépendances Perl, qui récupérera ce qui est nécessaire. Ne vous préoccupez pas des dépendances (mais vous pouvez tout de même lire le fichier cpanfile)
 * Build-essentials: installation de plusieurs outils et bibliothèques qui peuvent être nécessaires.
 
 ```shell
@@ -29,9 +29,9 @@ Editer le fichier `web_hooker.conf` afin qu'il corresponde à votre configuratio
 
 Le fichier `web_hooker.conf` est documenté et auto-suffisant, mais prenez le temps file de regardez attentivement l'option `authorized`.
 
-Vous aurez besoin d'un compte qui a les droit de push sur le dépôt github. Indiquez les certificats dans le fichier `web_hooker.conf`.
+Vous aurez besoin d'un compte qui a les droit de push sur le dépôt github. Indiquez les identifiants (login et mot de passe) dans le fichier `web_hooker.conf`.
 
-Afin d'avoir plus d'options sur comment Web Hooker écoute (interfaces, utilisateur, etc.), changer la configuration dans le fichier `web_hooker.conf` 
+Afin d'avoir plus d'options sur l'IP et le port d'écoute Web Hooker, changez la configuration dans le fichier `web_hooker.conf` 
 (jetez un coup d'oeil à  http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS pour connaître les options disponibles).
 
 ### Lancer WebHooker au démarrage
@@ -58,7 +58,7 @@ systemctl enable web_hooker.service
 systemctl start web_hooker.service
 ```
 
-C'est installé et en cours d'exécution, tout ce que vous avez à faire maintenant est d'ajouter un web hook à votre projet:
+C'est installé et en cours d'exécution, tout ce que vous avez à faire maintenant est d'ajouter un web hook à votre projet :
 
 ```
 http://127.0.0.1:4242/<gh_username>/<gh_repo>
