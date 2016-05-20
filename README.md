@@ -52,6 +52,7 @@ service web_hooker status
 cp /opt/web_hooker/utilities/web_hooker.service /etc/systemd/system
 # Adapt it to your installation directory
 vi /etc/systemd/system/web_hooker.service
+systemctl daemon-reload
 systemctl enable web_hooker.service
 systemctl start web_hooker.service
 ```
