@@ -1,20 +1,20 @@
 # Web Hooker
 
-Use Web Hooker to mirror your gitlab to Github :-)
+Utilisez Web Hooker afin de pouvoir faire un miroir de votre gitlab sur Github :-)
 
-## Debian installation
+## Installation sur Debian
 
-### Prerequisites
-* Git: to clone the repo
-* Carton: Perl dependancies manager, it will get what you need, so don't bother for dependancies (but you can read the file cpanfile if you want).
-* Build-essentials: Install several tools and libraries that you might need
+### Pré-repuis
+* Git: afin de cloner le dépôt
+* Carton: gestionnaire des dépendances Perl, qui récupérera ce qui est nécessaire. Ne vous préoccupez pas des dépendances (mais vous pouvez tout de même lire le fichier cpanfile)
+* Build-essentials: installation de plusieurs outils et bibliothèques qui peuvent être nécessaires.
 
 ```shell
 apt-get install git build-essentials
 cpan Carton
 ```
 
-### Installation of Web Hooker
+### Installation de Web Hooker
 
 ```shell
 cd /opt/
@@ -25,15 +25,16 @@ cp web_hooker.conf.template web_hooker.conf
 vi web_hooker.conf
 ```
 
-Edit `web_hooker.conf` to to comply with your configuration.
+Editer le fichier `web_hooker.conf` afin qu'il corresponde à votre configuration.
 
-The `web_hooker.conf` file is self-documented but, **please**, have a close look at the `authorized` option.
+Le fichier `web_hooker.conf` est documenté et auto-suffisant, mais, **s'il-vous-plaît**, prenez le temps de regarder attentivement l'option `authorized`.
 
-You will need an account that has the right to push to the github repository. Put its credentials in `web_hooker.conf`.
+Vous aurez besoin d'un compte qui a les droit de push sur le dépôt github. Indiquez les identifiants (login et mot de passe) dans le fichier `web_hooker.conf`.
 
-For more options about how Web Hooker listen (interfaces, user, etc.), change the configuration in `web_hooker.conf` (have a look at http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS for the available options).
+Afin d'avoir plus d'options sur l'IP et le port d'écoute Web Hooker, changez la configuration dans le fichier `web_hooker.conf` 
+(jetez un coup d'oeil à  http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS pour connaître les options disponibles).
 
-### Start WebHooker at boot
+### Lancer WebHooker au démarrage
 
 #### initV
 
@@ -50,14 +51,15 @@ service web_hooker status
 
 ```shell
 cp /opt/web_hooker/utilities/web_hooker.service /etc/systemd/system
-# Adapt it to your installation directory
+# A adapter à votre répetoire d'installation
 vi /etc/systemd/system/web_hooker.service
 systemctl daemon-reload
 systemctl enable web_hooker.service
 systemctl start web_hooker.service
 ```
 
-It's installed and running, all you have to do now is to add a web hook to your project :
+C'est installé et en cours d'exécution, tout ce que vous avez à faire maintenant est d'ajouter un web hook à votre projet :
+
 ```
 http://127.0.0.1:4242/<gh_username>/<gh_repo>
 ```
@@ -78,7 +80,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-## Contributors
+## Contributeurs
 
-* [@luc]<https://git.framasoft.org/u/luc>, main developer
+* [@luc]<https://git.framasoft.org/u/luc>, développeur principal
 * [@nikaro]<https://git.framasoft.org/u/nikaro>
