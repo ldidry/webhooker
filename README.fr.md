@@ -27,7 +27,7 @@ vi web_hooker.conf
 
 Editer le fichier `web_hooker.conf` afin qu'il corresponde à votre configuration.
 
-Le fichier `web_hooker.conf` est documenté et auto-suffisant, mais prenez le temps file de regardez attentivement l'option `authorized`.
+Le fichier `web_hooker.conf` est documenté et auto-suffisant, mais, **s'il-vous-plaît**, prenez le temps de regarder attentivement l'option `authorized`.
 
 Vous aurez besoin d'un compte qui a les droit de push sur le dépôt github. Indiquez les identifiants (login et mot de passe) dans le fichier `web_hooker.conf`.
 
