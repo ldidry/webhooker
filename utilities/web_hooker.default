@@ -1,3 +1,0 @@
-# WDIR is the path where you installed WebHooker
-# It has to end with a final /
-WDIR=/home/git/web_hooker/

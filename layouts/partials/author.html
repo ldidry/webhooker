@@ -1,0 +1,23 @@
+{{ "<!-- CONTACT -->" | safeHTML }}
+<footer id="author" class="bg-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-2">
+                {{ with .Site.Params.author.avatar }}<img src="{{ . }}" alt="author avatar" class="img-responsive img-circle" data-wow-delay=".1s">{{ end }}
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <h2 class="section-heading">{{ with .Site.Params.author.name }}{{ . }}{{ end }}</h2>
+                </div>
+                <hr class="primary">
+                <p>{{ .Site.Params.author.bio | markdownify }}</p>
+                <p>Social networks: 
+                        {{ with .Site.Params.author.diaspora }}<a href="https://twitter.com/{{ . }}" title="Twitter"><i class="fa fa-2x fa-twitter"></i></a>{{ end }}
+                        {{ with .Site.Params.author.diaspora }}<a href="{{ . }}" title="Diaspora*"><i class="fa fa-2x fa-asterisk"></i></a>{{ end }}
+                </p>
+                {{ with .Site.Params.author.site }}<p>Site: <a href="{{ . }}">{{ . }}</a></p>{{ end }}
+                {{ with .Site.Params.author.site_source }}<hr class="primary"><p>Get the sources of this site on <a href="{{ . }}">{{ . }}</a></p>{{ end }}
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+{{ "<!-- ABOUT -->" | safeHTML }}
+<section class="bg-primary" id="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ with .Site.Params.demo.headline }}{{ . }}{{ end }}</h2>
+                <hr class="light">
+                <p class="text-faded">{{ with .Site.Params.demo.description }}{{ . | markdownify }}{{ end }}</p>
+                <a href="{{ with .Site.Params.demo.buttonLink }}{{ . }}{{ end }}" class="btn btn-default btn-xl">{{ with .Site.Params.demo.buttonText }}{{ . }}{{ end }}</a>
+            </div>
+        </div>
+    </div>
+</section>
