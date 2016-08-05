@@ -25,7 +25,7 @@ cp web_hooker.conf.template web_hooker.conf
 vi web_hooker.conf
 ```
 
-Edit `web_hooker.conf` to to comply with your configuration.
+Edit `web_hooker.conf` to comply with your configuration.
 
 The `web_hooker.conf` file is self-documented but, **please**, have a close look at the `authorized` option.
 
@@ -57,7 +57,7 @@ systemctl enable web_hooker.service
 systemctl start web_hooker.service
 ```
 
-It's installed and running, all you have to do now is to add a web hook to your project :
+It's installed and running, all you have to do now is to add a web hook to your project:
 ```
 http://127.0.0.1:4242/<gh_username>/<gh_repo>
 ```
@@ -80,5 +80,5 @@ limitations under the License.
 
 ## Contributors
 
-* [@luc]<https://git.framasoft.org/u/luc>, main developer
-* [@nikaro]<https://git.framasoft.org/u/nikaro>
+* [@luc](https://git.framasoft.org/u/luc), main developer
+* [@nikaro](https://git.framasoft.org/u/nikaro)
