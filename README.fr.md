@@ -31,7 +31,7 @@ Le fichier `web_hooker.conf` est documenté et auto-suffisant, mais, **s'il-vous
 
 Vous aurez besoin d'un compte qui a les droit de push sur le dépôt github. Indiquez les identifiants (login et mot de passe) dans le fichier `web_hooker.conf`.
 
-Afin d'avoir plus d'options sur l'IP et le port d'écoute Web Hooker, changez la configuration dans le fichier `web_hooker.conf` 
+Afin d'avoir plus d'options sur l'IP et le port d'écoute Web Hooker, changez la configuration dans le fichier `web_hooker.conf`
 (jetez un coup d'oeil à  http://mojolicio.us/perldoc/Mojo/Server/Hypnotoad#SETTINGS pour connaître les options disponibles).
 
 ### Lancer WebHooker au démarrage
@@ -82,5 +82,5 @@ limitations under the License.
 
 ## Contributeurs
 
-* [@luc]<https://git.framasoft.org/u/luc>, développeur principal
-* [@nikaro]<https://git.framasoft.org/u/nikaro>
+* [@luc](https://git.framasoft.org/u/luc), développeur principal
+* [@nikaro](https://git.framasoft.org/u/nikaro)
